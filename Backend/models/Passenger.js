@@ -1,12 +1,16 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/sequelize');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/sequelize");
 
-const Passenger = sequelize.define('Passenger', {
+const Passenger = sequelize.define("Passenger", {
   Passenger_ID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
+  },
+  user_ID: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
   FirstName: {
     type: DataTypes.STRING(100),

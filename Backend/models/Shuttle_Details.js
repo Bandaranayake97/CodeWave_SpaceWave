@@ -1,13 +1,17 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/sequelize');
-const Agency = require('./Agency');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/sequelize");
+const Agency = require("./Agency");
 
-const Shuttle_Details = sequelize.define('Shuttle_Details', {
+const Shuttle_Details = sequelize.define("Shuttle_Details", {
   Shuttle_ID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
+  },
+  Shuttle_Name: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
   },
   Source_Agency_ID: {
     type: DataTypes.INTEGER,
@@ -35,7 +39,13 @@ const Shuttle_Details = sequelize.define('Shuttle_Details', {
   },
 });
 
-Shuttle_Details.belongsTo(Agency, { foreignKey: 'Source_Agency_ID', as: 'SourceAgency' });
-Shuttle_Details.belongsTo(Agency, { foreignKey: 'Destination_Agency_ID', as: 'DestinationAgency' });
+Shuttle_Details.belongsTo(Agency, {
+  foreignKey: "Source_Agency_ID",
+  as: "SourceAgency",
+});
+Shuttle_Details.belongsTo(Agency, {
+  foreignKey: "Destination_Agency_ID",
+  as: "DestinationAgency",
+});
 
 module.exports = Shuttle_Details;
