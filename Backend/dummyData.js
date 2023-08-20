@@ -8,7 +8,6 @@ const Travel_Class = require("./models/Travel_Class");
 const Shuttle_Service = require("./models/Shuttle_Service");
 const Shuttle_Details = require("./models/Shuttle_Details");
 const Seat_Details = require("./models/Seat_Details");
-const Reservation = require("./models/Reservation");
 const Payment_Status = require("./models/Payment_Status");
 const Shuttle_Cost = require("./models/Shuttle_Cost");
 const Service_Offering = require("./models/Shuttle_Service");
@@ -86,133 +85,6 @@ async function createDummyData() {
       AgencyLocation: "WALL-E",
     });
 
-    const passenger = await Passenger.create({
-      User_ID: User.User_ID,
-      FirstName: "supun",
-      LastName: "silva",
-      Address: "unuwinna",
-      PhoneNumber: 1234567860,
-      City: "kandy",
-      State: "State",
-      Zipcode: "12345",
-      Country: "srilanka",
-    });
-    const passenger1 = await Passenger.create({
-      User_ID: User1.User_ID,
-      FirstName: "Peter",
-      LastName: "Parker",
-      Address: "1001 Queens Blvd",
-      PhoneNumber: 1234567890,
-      City: "New York",
-      State: "NY",
-      Zipcode: "10011",
-      Country: "USA",
-    });
-    const passenger3 = await Passenger.create({
-      User_ID: User3.User_ID,
-      FirstName: "Peter",
-      LastName: "Johnson",
-      Address: "789 Oak St",
-      PhoneNumber: 3210987654,
-      City: "Townsville",
-      State: "NY",
-      Zipcode: "12346",
-      Country: "Canada",
-    });
-    const passenger4 = await Passenger.create({
-      User_ID: User4.User_ID,
-      FirstName: "Mary",
-      LastName: "Williams",
-      Address: "1012 Maple St",
-      PhoneNumber: 5432109876,
-      City: "Lakeview",
-      State: "TX",
-      Zipcode: "12347",
-      Country: "Mexico",
-    });
-    const passenger5 = await Passenger.create({
-      User_ID: User5.User_ID,
-      FirstName: "David",
-      LastName: "Brown",
-      Address: "1234 5th Ave",
-      PhoneNumber: 7654321098,
-      City: "New York City",
-      State: "NY",
-      Zipcode: "12348",
-      Country: "USA",
-    });
-
-    const User1 = await User.create({
-      Email: "2314sdfr@gmail.com",
-      password: "987",
-      user_Role: "passenger",
-    });
-    const User2 = await User.create({
-      Email: "sdfr2435@gmail.com",
-      password: "123Admin",
-      user_Role: "Addmin",
-    });
-    const User3 = await User.create({
-      Email: "reoi@gmail.com",
-      password: "123",
-      user_Role: "pasenger",
-    });
-    const User4 = await User.create({
-      Email: "marywilliams@gmail.com",
-      password: "password012",
-      user_Role: "passenger",
-    });
-    const User5 = await User.create({
-      Email: "davidbrown@gmail.com",
-      password: "password345",
-      user_Role: "pasengera",
-    });
-
-    const Reservation1 = await Reservation.create({
-      Passenger_ID: passenger.Passenger_ID,
-      Seat_ID: seatDetails2.Seat_ID,
-      Date_Of_Reservation: new Date(),
-    });
-    const Reservation2 = await Reservation.create({
-      Passenger_ID: passenger1.Passenger_ID,
-      Seat_ID: seatDetails1.Seat_ID,
-      Date_Of_Reservation: "2023.08.23",
-    });
-    const Reservation3 = await Reservation.create({
-      Passenger_ID: passenger3.Passenger_ID,
-      Seat_ID: seatDetails3.Seat_ID,
-      Date_Of_Reservation: new Date(),
-    });
-    const Reservation4 = await Reservation.create({
-      Passenger_ID: passenger2.Passenger_ID,
-      Seat_ID: seatDetails2.Seat_ID,
-      Date_Of_Reservation: "2023.08.30",
-    });
-    const paymentStatus = await Payment_Status.create({
-      Payment_Status_YN: "Y",
-      Payment_Due_Date: "2023.08.21",
-      Payment_Amount: "20000",
-      Reservation_ID: Reservation.Reservation_ID,
-    });
-    const paymentStatus1 = await Payment_Status.create({
-      Payment_Status_YN: "Y",
-      Payment_Due_Date: "2023.08.25",
-      Payment_Amount: "50000",
-      Reservation_ID: Reservation1.Reservation_ID,
-    });
-    const paymentStatus2 = await Payment_Status.create({
-      Payment_Status_YN: "N",
-      Payment_Due_Date: "2023.08.26",
-      Payment_Amount: "20000",
-      Reservation_ID: Reservation3.Reservation_ID,
-    });
-    const paymentStatus3 = await Payment_Status.create({
-      Payment_Status_YN: "N",
-      Payment_Due_Date: "2023.08.28",
-      Payment_Amount: "20000",
-      Reservation_ID: Reservation4.Reservation_ID,
-    });
-
     const travelClass = await Travel_Class.create({
       Travel_Class_Name: "Economy",
       Travel_Class_Capacity: 200,
@@ -225,7 +97,6 @@ async function createDummyData() {
       Travel_Class_Name: "First Class",
       Travel_Class_Capacity: 50,
     });
-
     const shuttleDetails = await Shuttle_Details.create({
       Shuttle_Name: "The Enterprise",
       Source_Agency_ID: agency.Agency_ID,
@@ -287,6 +158,53 @@ async function createDummyData() {
       Travel_Class_ID: travelClass.Travel_Class_ID,
       shuttle_ID: shuttleDetails2.Shuttle_ID,
     });
+
+    const Reservation1 = await Reservation.create({
+      Passenger_ID: passenger.Passenger_ID,
+      Seat_ID: seatDetails2.Seat_ID,
+      Date_Of_Reservation: new Date(),
+    });
+    const Reservation2 = await Reservation.create({
+      Passenger_ID: passenger1.Passenger_ID,
+      Seat_ID: seatDetails1.Seat_ID,
+      Date_Of_Reservation: "2023.08.23",
+    });
+    const Reservation3 = await Reservation.create({
+      Passenger_ID: passenger3.Passenger_ID,
+      Seat_ID: seatDetails3.Seat_ID,
+      Date_Of_Reservation: new Date(),
+    });
+
+    const Reservation4 = await Reservation.create({
+      Passenger_ID: passenger4.Passenger_ID,
+      Seat_ID: seatDetails2.Seat_ID,
+      Date_Of_Reservation: "2023.08.30",
+    });
+    const paymentStatus = await Payment_Status.create({
+      Payment_Status_YN: "Y",
+      Payment_Due_Date: "2023.08.21",
+      Payment_Amount: "20000",
+      Reservation_ID: Reservation.Reservation_ID,
+    });
+    const paymentStatus1 = await Payment_Status.create({
+      Payment_Status_YN: "Y",
+      Payment_Due_Date: "2023.08.25",
+      Payment_Amount: "50000",
+      Reservation_ID: Reservation1.Reservation_ID,
+    });
+    const paymentStatus2 = await Payment_Status.create({
+      Payment_Status_YN: "N",
+      Payment_Due_Date: "2023.08.26",
+      Payment_Amount: "20000",
+      Reservation_ID: Reservation3.Reservation_ID,
+    });
+    const paymentStatus3 = await Payment_Status.create({
+      Payment_Status_YN: "N",
+      Payment_Due_Date: "2023.08.28",
+      Payment_Amount: "20000",
+      Reservation_ID: Reservation4.Reservation_ID,
+    });
+
     const shuttleCost = await Shuttle_Cost.create({
       Seat_ID: seatDetails.Seat_ID,
       Valid_From_Date: new Date(),

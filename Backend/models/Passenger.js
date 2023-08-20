@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/sequelize");
+const User = require("./User");
 
 const Passenger = sequelize.define("Passenger", {
   Passenger_ID: {
@@ -38,5 +39,6 @@ const Passenger = sequelize.define("Passenger", {
     type: DataTypes.STRING(100),
   },
 });
+Passenger.belongsTo(User, { foreignKey: "user_ID", as: "User" });
 
 module.exports = Passenger;
